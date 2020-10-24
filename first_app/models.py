@@ -1,16 +1,6 @@
-from enum import Enum
-
 from django.db import models
 
-
-class LoyalityPrograms(Enum):
-    PLATINUM = "PLATINUM CARD"
-    GOLD = "GOLDEN CARD"
-    SILVER = "SILVER CARD"
-
-    @classmethod
-    def choices(cls):
-        return [(key.name, key.value) for key in cls]
+from .choices import LoyalityPrograms
 
 
 class Profile(models.Model):
