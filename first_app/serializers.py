@@ -28,8 +28,8 @@ class DisplayChoiceSerializer(serializers.ChoiceField):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    gender = DisplayChoiceSerializer(choices=Profile.GENDERS)
-    loyality = DisplayChoiceSerializer(choices=LoyalityPrograms.choices())
+    gender = DisplayChoiceSerializer(choices=Profile.GENDERS, required=False)
+    loyality = DisplayChoiceSerializer(choices=LoyalityPrograms.choices(), required=False)
 
     class Meta:
         model = Profile
