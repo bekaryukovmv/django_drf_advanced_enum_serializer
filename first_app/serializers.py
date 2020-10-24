@@ -3,7 +3,7 @@ from rest_framework import serializers
 from first_app.models import LoyalityPrograms, Profile
 
 
-class DisplayChoiceSerializer(serializers.ChoiceField):
+class DisplayChoiceFieldSerializer(serializers.ChoiceField):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.choice_strings_to_values = {str(key).lower(): key for key in self.choices}
@@ -28,8 +28,8 @@ class DisplayChoiceSerializer(serializers.ChoiceField):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    gender = DisplayChoiceSerializer(choices=Profile.GENDERS, required=False)
-    loyality = DisplayChoiceSerializer(choices=LoyalityPrograms.choices(), required=False)
+    gender = DisplayChoiceFieldSerializer(choices=Profile.GENDERS, required=False)
+    loyality = DisplayChoiceFieldSerializer(choices=LoyalityPrograms.choices(), required=False)
 
     class Meta:
         model = Profile
