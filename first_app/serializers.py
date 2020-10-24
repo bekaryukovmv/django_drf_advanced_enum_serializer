@@ -34,3 +34,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = "__all__"
+
+
+class ChoicedListSerializer(serializers.Serializer):
+    value = serializers.CharField()
+    display_name = serializers.CharField()
