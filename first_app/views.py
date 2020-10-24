@@ -20,6 +20,7 @@ class ChoicesListView(ListAPIView):
     serializer_class = ChoicedListSerializer
 
     def filter_queryset(self, queryset):
+        # FIXME add exclude field
         filtered_queryset = []
         if self.request.query_params.get("search"):
             search_params = [x.strip() for x in self.request.query_params["search"].split()]
@@ -33,9 +34,9 @@ class ChoicesListView(ListAPIView):
 
         if self.request.query_params.get("ordering"):
             ordering_params = [
-                x.strip()
+                x.strip().lower()
                 for x in self.request.query_params["ordering"].split(", ")
-                if x in ["value", "-value", "display_name", "-display_name"]
+                if x.lower() in ["value", "-value", "display_name", "-display_name"]
             ]
 
             assert len(ordering_params) <= 2, "Too many ordering params"
@@ -44,8 +45,6 @@ class ChoicesListView(ListAPIView):
 
             if len(ordering_params) == 2:
                 ordered_func = lambda i: (i[ordering_params[0].strip("-")], i[ordering_params[1].strip("-")])
-                if ordering_params[0].startswith("-") or ordering_params[1].startswith("-"):
-                    flag = False
 
             elif ordering_params[0].startswith("-"):
                 flag = True
