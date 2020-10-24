@@ -46,7 +46,7 @@ class ChoicesListView(ListAPIView):
             if len(ordering_params) == 2:
                 ordered_func = lambda i: (i[ordering_params[0].strip("-")], i[ordering_params[1].strip("-")])
 
-            elif ordering_params[0].startswith("-"):
+            if ordering_params[0].startswith("-"):
                 flag = True
 
             ordered_func = lambda i: (i[ordering_params[0].strip("-")])
