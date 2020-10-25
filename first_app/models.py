@@ -17,7 +17,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=30)
     gender = models.CharField(max_length=1, choices=GENDERS, default="U")
     age = models.IntegerField(default=0)
-    loyality = models.CharField(max_length=8, choices=LoyalityPrograms.choices(), default=LoyalityPrograms.SILVER.name)
+    loyality = models.CharField(max_length=8, choices=LoyalityPrograms.choices(), default=LoyalityPrograms.SILVER_CARD)
     year_in_school = models.CharField(
         max_length=2,
         choices=YearInSchool.choices,

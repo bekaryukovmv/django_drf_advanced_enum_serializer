@@ -4,14 +4,14 @@ from enum import Enum
 class ChoicedEnum(Enum):
     @classmethod
     def choices(cls):
-        return [(i.name, i.value) for i in cls]
+        return [(i.value, str(i.name).replace("_", " ").title()) for i in cls]
 
     @classmethod
     def get_list_of_choices(cls):
-        return [{"value": i.name, "display_name": i.value} for i in cls]
+        return [{"value": i.value, "display_name": str(i.name).replace("_", " ").title()} for i in cls]
 
 
 class LoyalityPrograms(ChoicedEnum):
-    PLATINUM = "PLATINUM CARD"
-    GOLD = "GOLDEN CARD"
-    SILVER = "SILVER CARD"
+    PLATINUM_CARD = "Platinum"
+    GOLDEN_CARD = "Gold"
+    SILVER_CARD = "Silver"
