@@ -4,22 +4,25 @@ Some time ago, I ran into the problem of serializing a ChoiceField in Django Res
 I needed the field to be able to correctly accept and process both: the value and the display_name for the ChoiceField, of POST and PUT requests:
 
         {
-        ...,
-        "gender": value,
-        ...
+                ...,
+                "gender": value,
+                ...
         }
         
         OR
         
         {
-        ...,
-        "gender": display_name,
-        ...
+                ...,
+                "gender": display_name,
+                ...
         }
 
 as well as the enums in the case. And also return the ChoiceField field as an object on GET:
 
-        {"value": value, "display_name": display_name}
+        {
+                "value": value,
+                "display_name": display_name
+        }
 
 I had to little redefine the behavior a serializers.ChoiceField and create my own DisplayChoiceFieldSerializer. Now Django serializers work as I need :)
 
