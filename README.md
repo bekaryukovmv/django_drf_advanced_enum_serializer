@@ -17,7 +17,7 @@ I needed the field to be able to correctly accept and process both: the value an
         ...
         }
 
-as well as the enum or the ChoiceField in the case, and also return the ChoiceField field as an object containing on GET:
+as well as the enums in the case. And also return the ChoiceField field as an object on GET:
 
         {"value": value, "display_name": display_name}
 
@@ -25,7 +25,9 @@ I had to little redefine the behavior a serializers.ChoiceField and create my ow
 
 ## Quick start
 
-0.  Download django-advanced-enum-drf-0.1.tar.gz from this repo
+0.  Download django-advanced-enum-drf-0.1.tar.gz from this repo and install it with pip
+        
+        pip install --user <path>/django-advanced-enum-drf-0.1.tar.gz
 
 1.  Add "advanced_enum_drf" to your INSTALLED_APPS setting like this:
 
