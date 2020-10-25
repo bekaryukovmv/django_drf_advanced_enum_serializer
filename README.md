@@ -8,9 +8,9 @@ I needed the field to be able to correctly accept and process both: the value an
                 "gender": value,
                 ...
         }
-        
+
         OR
-        
+
         {
                 ...,
                 "gender": display_name,
@@ -29,7 +29,7 @@ I had to little redefine the behavior a serializers.ChoiceField and create my ow
 ## Quick start
 
 0.  Download django-advanced-enum-drf-0.1.tar.gz from this repo and install it with pip
-        
+
         pip install --user <path>/django-advanced-enum-drf-0.1.tar.gz
 
 1.  Add "advanced_enum_drf" to your INSTALLED_APPS setting like this:
