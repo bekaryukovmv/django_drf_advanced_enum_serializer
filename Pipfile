@@ -9,10 +9,10 @@ black = "*"
 pylint = "*"
 
 [packages]
-django = "==2.2"
 djangorestframework = "*"
 six = "*"
 pylint-django = "*"
+django = "==3.1"
 
 [requires]
 python_version = "3.8"

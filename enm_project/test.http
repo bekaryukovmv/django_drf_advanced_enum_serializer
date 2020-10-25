@@ -6,10 +6,11 @@ POST http://127.0.0.1:8000/api/v1/profile/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Doctor",
-    "age": 77,
+    "name": "Doctor Who",
+    "age": 768,
     "gender": "M",
-    "loyality": "PLATINUM CARD"
+    "loyality": "PLATINUM CARD",
+    "year_in_school": "GR"
 }
 
 ###
