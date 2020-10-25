@@ -1,9 +1,23 @@
 # django drf advanced edenum serializer
 
 Some time ago, I ran into the problem of serializing a ChoiceField in Django Restframework.
-I needed the field to be able to correctly accept and process both: the value and the display_name for the ChoiceField,
-as well as the enum or the ChoiceField in the case of POST and PUT requests,
-and also return the ChoiceField field as an object containing on GET:
+I needed the field to be able to correctly accept and process both: the value and the display_name for the ChoiceField, of POST and PUT requests:
+
+        {
+        ...,
+        "gender": value,
+        ...
+        }
+        
+        OR
+        
+        {
+        ...,
+        "gender": display_name,
+        ...
+        }
+
+as well as the enum or the ChoiceField in the case, and also return the ChoiceField field as an object containing on GET:
 
         {"value": value, "display_name": display_name}
 
