@@ -1,3 +1,4 @@
+from django.db.models.enums import ChoicesMeta
 from django.db.models.query import QuerySet
 from rest_framework import permissions, viewsets
 from rest_framework.generics import ListAPIView
@@ -30,8 +31,12 @@ class ChoicesListView(ListChoiceFilteredMixin, ListAPIView):
         queryset = self.queryset
         if isinstance(queryset, QuerySet):
             queryset = queryset.all()
+        elif isinstance(queryset, ChoicesMeta):
+            queryset = [{"value": key, "display_name": key.label} for key in queryset]
         elif isinstance(queryset[0], tuple):
             queryset = [{"value": key, "display_name": val} for (key, val) in queryset]
+        else:
+            raise TypeError("Unknown type of queryset!")
 
         return queryset
 
@@ -42,3 +47,7 @@ class LoyalityChoicesListView(ChoicesListView):
 
 class GenderChoicesListView(ChoicesListView):
     queryset = Profile.GENDERS
+
+
+class YearsToSchoolView(ChoicesListView):
+    queryset = Profile.YearInSchool
